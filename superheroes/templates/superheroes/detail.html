@@ -35,9 +35,13 @@
             </h2>
         </li>
     </ul>
-    <button>
-        <a href="{% url 'superheroes:update_hero' hero.id %}">Update Hero</a>
-    </button>
-    
+    <span>
+        <button>
+            <a href="{% url 'superheroes:update_hero' single_hero.id %} ">UPDATE HERO</a>
+        </button>
+        <button>
+            <a href="{% url 'superheroes:delete_hero' single_hero.id %} ">DELETE HERO</a>
+        </button>
+    </span>
 </body>
 </html>
