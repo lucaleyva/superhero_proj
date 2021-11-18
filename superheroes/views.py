@@ -59,7 +59,14 @@ def update_hero(request, hero_id):
         }
         return render(request, 'superheroes/update_hero.html', context)
 
-def delete_hero(request, hero_id):
-    delete_hero = Superhero.objects.get(pk=hero_id)
-    delete_hero.delete()
-    return redirect(reverse('superheroes:index'))
+def delete(request, hero_id):
+    if request.method == 'POST':
+        details = Superhero.objects.get(pk=hero_id)
+        details.delete()
+        return HttpResponseRedirect(reverse('superheroes:index'))
+    else:
+        details = Superhero.objects.get(pk=hero_id)
+        context = {
+            'hero': details
+        }
+        return render(request, 'superheroes/delete.html', context)
